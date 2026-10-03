@@ -21,7 +21,13 @@
         <li class="nav-item"><a class="nav-link" data-route="produits" href="#/produits">Produits</a></li>
         <li class="nav-item"><a class="nav-link" data-route="contact" href="#/contact">Contact</a></li>
       </ul>
-      <a href="#/panier" class="btn btn-primary">Panier <span id="cart-count" class="badge bg-light text-dark">0</span></a>
+      <div class="d-flex align-items-center gap-2">
+        <button id="theme-toggle" class="btn btn-sm btn-outline-light" type="button" aria-label="Basculer le thème">
+          <span class="theme-icon" aria-hidden="true">🌙</span>
+          <span class="theme-label">Sombre</span>
+        </button>
+        <a href="#/panier" class="btn btn-primary">Panier <span id="cart-count" class="badge bg-light text-dark">0</span></a>
+      </div>
     </div>
   </div>
 </nav>

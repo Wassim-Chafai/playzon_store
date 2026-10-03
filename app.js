@@ -306,6 +306,42 @@ function router() {
   window.scrollTo(0, 0);
 }
 
+const THEME_KEY = "playzone-theme";
+
+function applyTheme(theme) {
+  const nextTheme = theme === "dark" ? "dark" : "light";
+  document.body.dataset.theme = nextTheme;
+
+  const toggle = document.getElementById("theme-toggle");
+  if (toggle) {
+    const icon = toggle.querySelector(".theme-icon");
+    const label = toggle.querySelector(".theme-label");
+
+    if (icon) icon.textContent = nextTheme === "dark" ? "☀️" : "🌙";
+    if (label) label.textContent = nextTheme === "dark" ? "Clair" : "Sombre";
+
+    toggle.classList.toggle("btn-outline-light", nextTheme !== "dark");
+    toggle.classList.toggle("btn-outline-secondary", nextTheme === "dark");
+  }
+
+  localStorage.setItem(THEME_KEY, nextTheme);
+}
+
+function initTheme() {
+  const savedTheme = localStorage.getItem(THEME_KEY);
+  const preferredTheme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+  applyTheme(savedTheme || preferredTheme);
+
+  const toggle = document.getElementById("theme-toggle");
+  if (toggle) {
+    toggle.addEventListener("click", () => {
+      applyTheme(document.body.dataset.theme === "dark" ? "light" : "dark");
+    });
+  }
+}
+
 window.addEventListener("hashchange", router);
 majCompteur();
+initTheme();
 router();
+
