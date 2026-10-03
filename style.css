@@ -1,48 +1,90 @@
 /* ===== Variables ===== */
 :root{
-  --bleu:#0070d1;      /* bleu PlayStation */
-  --nuit:#10192e;      /* fond sombre */
-  --ciel:#eef4fb;      /* fond clair */
-  --orange:#ff6b35;    /* accent promo */
+  --bleu:#0070d1;
+  --nuit:#10192e;
+  --ciel:#eef4fb;
+  --orange:#ff6b35;
   --bs-primary:#0070d1;
+  --bg:#f5f8ff;
+  --bg-soft:#edf4ff;
+  --surface:#ffffff;
+  --surface-soft:#eef4fb;
+  --text:#1c2538;
+  --muted:#5d6d8a;
+  --nav-bg:#10192e;
+  --nav-text:#dfe7ff;
+  --nav-border:rgba(255,255,255,.08);
+  --card-border:#e3e9f2;
+  --shadow:rgba(16,25,46,.12);
+  --link:#0070d1;
 }
-body{font-family:'Barlow',system-ui,sans-serif;color:#1c2538;background:#fff}
+
+body[data-theme="dark"]{
+  --bg:#0b1220;
+  --bg-soft:#101827;
+  --surface:#111b2d;
+  --surface-soft:#182538;
+  --text:#edf3ff;
+  --muted:#a9b7d0;
+  --nav-bg:#08111d;
+  --nav-text:#dfe7ff;
+  --nav-border:rgba(255,255,255,.06);
+  --card-border:#243244;
+  --shadow:rgba(0,0,0,.35);
+  --link:#7db8ff;
+}
+
+body{font-family:'Barlow',system-ui,sans-serif;color:var(--text);background:var(--bg)}
 h1,h2,h3,h4,.navbar-brand{font-family:'Rajdhani',sans-serif;font-weight:700}
-a{color:var(--bleu)}
+a{color:var(--link)}
 .btn-primary{--bs-btn-bg:var(--bleu);--bs-btn-border-color:var(--bleu);--bs-btn-hover-bg:#005bab;--bs-btn-hover-border-color:#005bab}
+.text-muted{color:var(--muted)!important}
+body[data-theme="dark"] .text-dark{color:var(--text)!important}
+body[data-theme="dark"] .table{--bs-table-color:var(--text);--bs-table-bg:transparent;--bs-table-striped-bg:rgba(255,255,255,.02);--bs-table-border-color:var(--card-border)}
+body[data-theme="dark"] .form-control,
+body[data-theme="dark"] .form-select,
+body[data-theme="dark"] .form-control:focus,
+body[data-theme="dark"] .form-select:focus{
+  background-color:var(--surface);
+  color:var(--text);
+  border-color:var(--card-border);
+}
+body[data-theme="dark"] .form-control::placeholder{color:var(--muted)}
 
 /* ===== Navbar ===== */
-.navbar{background:var(--nuit)}
+.navbar{background:var(--nav-bg);border-bottom:1px solid var(--nav-border)}
 .navbar-brand{font-size:1.6rem;letter-spacing:.5px;color:#fff!important}
 .navbar-brand span{color:#4da3ff}
-.nav-link{color:#c9d3e6!important}
+.nav-link{color:var(--nav-text)!important}
 .nav-link:hover,.nav-link.active{color:#fff!important}
 #cart-count{font-size:.7rem}
+#theme-toggle{border-color:rgba(255,255,255,.35);color:#fff}
+#theme-toggle:hover{background:#fff;color:#0d1729}
 
 /* ===== Hero ===== */
-.hero{background:linear-gradient(120deg,var(--nuit) 55%,#0b3d78);color:#fff;padding:90px 0}
+.hero{background:linear-gradient(120deg,var(--nav-bg) 55%,#0b3d78);color:#fff;padding:90px 0}
 .hero h1{font-size:clamp(2.4rem,6vw,4.2rem);line-height:1.05}
 .hero p{max-width:46ch;color:#c9d3e6;font-size:1.15rem}
 .hero-visual{font-size:9rem;text-align:center;filter:drop-shadow(0 10px 30px rgba(0,112,209,.6))}
 
 /* ===== Catégories ===== */
-.cat-tile{display:block;text-align:center;padding:26px 10px;background:var(--ciel);border-radius:14px;
-  color:var(--nuit);text-decoration:none;font-weight:600;border:2px solid transparent}
+.cat-tile{display:block;text-align:center;padding:26px 10px;background:var(--surface-soft);border-radius:14px;
+  color:var(--text);text-decoration:none;font-weight:600;border:2px solid transparent}
 .cat-tile:hover{border-color:var(--bleu);color:var(--bleu)}
 .cat-tile .icon{font-size:2.4rem;display:block}
 
 /* ===== Cartes produit ===== */
-.product-card{border:1px solid #e3e9f2;border-radius:14px;overflow:hidden;height:100%;transition:box-shadow .2s}
-.product-card:hover{box-shadow:0 8px 24px rgba(16,25,46,.12)}
-.product-img{height:170px;display:flex;align-items:center;justify-content:center;font-size:4.5rem;background:var(--ciel)}
-.price{font-family:'Rajdhani',sans-serif;font-size:1.5rem;font-weight:700;color:var(--nuit)}
+.product-card{background:var(--surface);border:1px solid var(--card-border);border-radius:14px;overflow:hidden;height:100%;transition:box-shadow .2s}
+.product-card:hover{box-shadow:0 8px 24px var(--shadow)}
+.product-img{height:170px;display:flex;align-items:center;justify-content:center;font-size:4.5rem;background:var(--surface-soft)}
+.price{font-family:'Rajdhani',sans-serif;font-size:1.5rem;font-weight:700;color:var(--text)}
 .old-price{text-decoration:line-through;color:#8a94a8;margin-left:6px}
 .badge-promo{background:var(--orange)}
 
 /* ===== Divers ===== */
-.page-title{background:var(--ciel);padding:40px 0;margin-bottom:40px}
-.detail-img{font-size:10rem;background:var(--ciel);border-radius:18px;display:flex;align-items:center;justify-content:center;min-height:360px}
-footer{background:var(--nuit);color:#9aa7c2;padding:40px 0;margin-top:80px}
+.page-title{background:var(--surface-soft);padding:40px 0;margin-bottom:40px}
+.detail-img{font-size:10rem;background:var(--surface-soft);border:1px solid var(--card-border);border-radius:18px;display:flex;align-items:center;justify-content:center;min-height:360px}
+footer{background:var(--nav-bg);color:#9aa7c2;padding:40px 0;margin-top:80px}
 footer a{color:#c9d3e6}
 :focus-visible{outline:3px solid var(--orange);outline-offset:2px}
 
@@ -50,7 +92,12 @@ footer a{color:#c9d3e6}
 #app{min-height:60vh}
 
 /* ===== Images produits ===== */
-.product-img{background:#fff;padding:12px}
+.product-img{background:var(--surface);padding:12px}
 .product-img img{max-width:100%;max-height:100%;object-fit:contain}
-.detail-img{background:#fff;border:1px solid #e3e9f2;padding:24px}
+.detail-img{background:var(--surface);padding:24px}
 .detail-img img{max-width:100%;max-height:420px;object-fit:contain}
+
+body[data-theme="dark"] .btn-outline-secondary{color:var(--text);border-color:var(--card-border)}
+body[data-theme="dark"] .btn-outline-secondary:hover{background:var(--surface-soft);color:var(--text)}
+body[data-theme="dark"] .alert-success{background:rgba(25,135,84,.15);color:#d1fae5;border-color:rgba(25,135,84,.3)}
+body[data-theme="dark"] .alert{color:var(--text)}
